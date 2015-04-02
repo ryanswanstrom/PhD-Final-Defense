@@ -15,7 +15,6 @@
   {Scoring a Software Development Organization\\ with a Single Number}
 
 \author
-  [Ryan]
   {Ryan M. Swanstrom}
 
 \date
@@ -91,7 +90,7 @@
         \end{frame}
     
     \subsection{The Problem}
-        \begin{frame}{So What is Wrong?}
+        \begin{frame}{What is Wrong?}
             \begin{itemize}
                 \item Performance is difficult to measure
                 \item Inconsistent
@@ -103,14 +102,65 @@
 \section{CRI}
 
     \subsection{CRI Overview}
+        \begin{frame}{What is CRI?}
+            \begin{displayquote}
+                The \textit{Cumulative Result Indicator (CRI)} is an algorithm to provide a single 
+                number score to measure the performance of an SDO. 
+            \end{displayquote}
+            \begin{enumerate}
+                \item Quality
+                \item Availability
+                \item Satisfaction
+                \item Schedule
+                \item Requirements
+            \end{enumerate}
+        \end{frame} 
+        
+        \begin{frame}{CRI Attributes}
+            \begin{itemize}
+                \item The range of scores must have equal values above and below 0
+                \item The minimum score must equate to the worst possible 
+                    performance, however that is defined
+                \item Similarly, the maximum score must equate to the best possible performance.  
+                \item A score of 0 must be average (or expected) performance
+                \item All individual elements must have the same scoring range
+            \end{itemize}
+        \end{frame} 
+        
     \subsection{Quality}
+        \begin{frame}{Quality Data}
+        \end{frame} 
+        \begin{frame}{Quality Baseline Function}
+        \end{frame} 
+        \begin{frame}{Quality Formula}
+        \end{frame} 
     \subsection{Availability}
+        \begin{frame}{Availability Data}
+        \end{frame} 
+        \begin{frame}{Availability Formula }
+        \end{frame} 
     \subsection{Satisfaction}
+        \begin{frame}{Satisfaction Data}
+        \end{frame} 
+        \begin{frame}{Satisfaction Formula }
+        \end{frame} 
     \subsection{Schedule}
+        \begin{frame}{Schedule Data}
+        \end{frame} 
+        \begin{frame}{Schedule Formula }
+        \end{frame} 
     \subsection{Requirements}
+        \begin{frame}{Requirements Data}
+        \end{frame} 
+        \begin{frame}{Requirements Formula }
+        \end{frame} 
     \subsection{Overall}
+        \begin{frame}{Overall Formula}
+        \end{frame} 
 
     \subsection{Comparison}
+        \begin{frame}{Requirements Data}
+        \end{frame} 
     
     \subsection{Storage Framework}
         \begin{frame}{SDLC-AE}
@@ -121,11 +171,48 @@
         \end{frame}
 
 \section{Case Study}
+        \begin{frame}{Case Study Overview}
+            \begin{itemize}
+                \item SDO of a Large Financial Institution
+                \item Data spans years 2008 - 2015
+                \item $k = 100$
+            \end{itemize}
+        \end{frame}
     \subsection{Quality}
+        \begin{frame}{CRI Quality Scores}
+            \begin{figure}
+                \centering
+                \includegraphics[scale=.23]{images/quality_scores.png}
+            \end{figure}
+        \end{frame}
     \subsection{Availability}
+        \begin{frame}{CRI Availability Scores}
+            \begin{figure}
+                \centering
+                \includegraphics[scale=.23]{images/availability_scores.png}
+            \end{figure}
+        \end{frame}
     \subsection{Schedule}
+        \begin{frame}{CRI Schedule Scores}
+            \begin{figure}
+                \centering
+                \includegraphics[scale=.23]{images/availability_scores.png}
+            \end{figure}
+        \end{frame}
     \subsection{Requirements}
+        \begin{frame}{CRI Requirements Scores}
+            \begin{figure}
+                \centering
+                \includegraphics[scale=.23]{images/availability_scores.png}
+            \end{figure}
+        \end{frame}
     \subsection{Overall}
+        \begin{frame}{CRI Availability Scores}
+            \begin{figure}
+                \centering
+                \includegraphics[scale=.23]{images/cri_scores.png}
+            \end{figure}
+        \end{frame}
 
 \section{Conclusion}
 
@@ -144,308 +231,5 @@
             \bibliography{references}
           
         \end{frame}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-\begin{frame}{Performance?}
-  \begin{itemize}
-      \item How is your organization performing?
-      \item Compared to last month/year?
-  \end{itemize}
-\end{frame}
-
-\begin{frame}{What to track?}
-  \begin{itemize}
-      \item What would you track?
-      \item What is important?
-      \item How would you measure that?
-      \item Can you score that measurement?
-      \item With a \textbf{single number}?
-  \end{itemize}
-\end{frame}
-
-
-\subsection{Background}
-
-\begin{frame}{What exists for an SDO?}
-  \begin{itemize}
-      \item Charts
-      \item Metrics
-      \item Dashboards
-      \item KPIs
-      \item Scorecards
-  \end{itemize}
-\end{frame}
-
-\begin{frame}{Balanced Scorecard}
-    Strategic Planning and Management System with measures for the following:
-    
-    \begin{itemize}
-      \item Financial 
-      \item Customer Focus
-      \item Environment/Community
-      \item Internal Process
-      \item Employee Satisfaction
-      \item Learning and Growth
-    \end{itemize}
-\end{frame}
-
-\subsection{The Approach}
-
-\begin{frame}{5 Important Elements}
-    What is important to a Software Development Organization?
-    
-    \begin{enumerate}
-        \item Availability 
-        \item Quality
-        \item Satisfaction
-        \item Schedule
-        \item Requirements
-    \end{enumerate}
-\end{frame}
-
-\begin{frame}{CRI}
-    \begin{displayquote}
-    The CRI is an algorithm to provide a single number score
-    for the performance of an SDO.
-    \end{displayquote}
-    
-    \begin{enumerate}
-        \item $[-max, max]$
-        \item $max$ : best possible performance (perfect)
-        \item $-max$ : worst possible performance (all wrong)
-        \item $0$ : expected performance
-        \item Time Interval
-        \item Element CRI
-        \item Overall CRI
-    \end{enumerate}
-\end{frame}
-
-\subsection{How}
-
-\begin{frame}{Process}
-    How will this be done?
-\end{frame}
-
-\begin{frame}{Process}
-    What is the process for computing CRI?
-    
-    Given the time interval, perform the following:
-    
-    \begin{enumerate}
-        \item Aquire the necessary data
-        \item Compute the scores for the 5 elements
-        \item Compute the overall CRI score
-        \item Store the results
-        \item Display/Share the results
-    \end{enumerate}
-\end{frame}
-
-\subsection{The Algorithms}
-
-\begin{frame}{Availability - Data}
-    
-    \begin{tabular}{l | r | r}
-        \textbf{Column Name} & \textbf{Data Type} &  \\
-        
-        Application ID & String  & Required \\
-        Frequency Date & Date & Required \\
-        Uptime & Float & Optional \\
-        Scheduled Downtime & Float & Optional \\
-        Unscheduled Downtime & Float  & Optional \\
-        Percent Uptime & Float & Required \\
-        Expected Percent Uptime & Float & Required \\
-    \end{tabular}
-\end{frame}
-
-\begin{frame}{Availability - Formula}
-    
-    \begin{displaymath}
-       S_{1_i} = \left\{
-         \begin{array}{lr}
-           \text{where } A_{a_i} \leq A_{e_i} & : \left[ \frac{A_{a_i} - A_{e_i}}{A_{e_i}} \right] \\
-           \text{where } A_{a_i} > A_{e_i}  & : \left[ \frac{A_{a_i} - A_{e_i} }{1-A_{e_i}} \right]
-         \end{array}
-       \right.
-    \end{displaymath} 
-    \[
-        S_1 = \frac{\sum^n_{i=1}S_{1_i}}{n}
-    \]
-
-    \begin{itemize}
-        \item $A_{a_i}$ actual availability for app i
-        \item $A_{e_i}$ expected availability for app i
-    \end{itemize}
-\end{frame}
-
-\begin{frame}{Quality - Data}
-    
-    \begin{tabular}{l | r | r}
-    \textbf{Column Name} & \textbf{Data Type} &  \\
-    
-    Application ID & String (factor) & Required \\
-    Frequency Date & Date & Required \\
-    Development Hours & Integer & Required \\
-    Testing Hours & Integer & Optional \\ 
-    Defects in SIT & Integer & Optional \\ 
-    Defects in UAT & Integer  & Optional \\ 
-    Defects in PROD & Integer  & Required \\
-    \end{tabular}
-\end{frame}
-
-\begin{frame}{Quality - Formula}
-    \begin{displaymath}
-       S_{2_i} = \left\{
-         \begin{array}{lr}
-           \text{where } d_i \leq f_i & :  \frac{f_i - d_i}{f_i}  \\
-           \text{where } d_i > f_i  & : \frac{f_i-d_i }{6\sigma_i}
-         \end{array}
-       \right] \text{   , calculate quality score for each app $i$}
-    \end{displaymath} 
-
-    \[
-        S_{2} = \frac{\sum^n_{i=1} S_{2_i}}{n} \text{   , average the quality scores}
-    \]
-    \begin{itemize}
-        \item $n$ is the number of apps
-        \item $d_i$ is the actual number of PROD defects for app $i$
-        \item $f$ is the function to predict PROD defects based upon devhours, testinghours, defectsSIT,
-            and defectsUAT
-        \item $S_{1_i}$ is the quality score for app $i$
-        \item $\sigma_i$ estimate of the stan dev of the population using function $f_i$ above
-    \end{itemize}
-    
-\end{frame}
-
-\begin{frame}{Satisfaction - Data}
-    
-    \begin{tabular}{l | r | r}
-        \textbf{Column Name} & \textbf{Data Type} &  \\
-        
-        Question ID & String  & Required \\
-        Question Text & String  & Optional \\
-        Application ID & String & Required \\
-        Frequency Date & Date & Required \\
-        Response & Integer between min and max  & Required \\
-        Response Date & Date & Optional \\
-    \end{tabular}
-\end{frame}
-
-\begin{frame}{Satisfaction - Formula}
-    
-    \[
-        S_3 = \frac{\sum^n_{i=1}\left( \frac{\sum^m_{j=1}a_{ij}- \frac{min + max}{2}}{m}  \right)}{n}
-    \]
-    
-    \begin{itemize}
-        \item $a_{i j}$ answer to question $j$ for app $i$
-        \item $m$ number of questions
-        \item $n$ number of apps
-        \item $min$ minimum score for a question
-        \item $max$ maximum score for a question
-    \end{itemize}
-\end{frame}
-
-\begin{frame}{Schedule - Data}
-    
-    \begin{tabular}{l | r | r}
-        \textbf{Column Name} & \textbf{Data Type} &  \\
-        
-        Application ID & String  & Required \\
-        Frequency Date & Date & Required \\
-        Scheduled Finish Date & Date & Required \\
-        Actual Start Date & Date  & Required \\
-        Actual Finish Date & Date  & Required \\
-    \end{tabular}
-\end{frame}
-
-\begin{frame}{Schedule - Formula}
-    
-    \begin{itemize}
-    \item The best possible score should be achieved
-            when meeting the estimated date exactly.
-    \item The maximum score
-            should come from exactly meeting the estimate.
-    \item Given historical
-            release data, determine an 
-            average $\Delta$ between the actual and the estimated. 
-    \item Finishing a project within that $\Delta$ should result 
-            in a positive score.
-    \item Outside the $\Delta$ results in
-            negative scores. 
-    \end{itemize}     
-              
-\end{frame}
-
-\begin{frame}{Requirements - Data}
-    
-    \begin{tabular}{l | r | r}
-        \textbf{Column Name} & \textbf{Data Type} &  \\
-        
-        Application ID & String  & Required \\
-        Frequency Date & Date & Required \\
-        Requirements Scheduled & Integer & Required \\
-        Actual Requirements Released & Integer  & Required \\
-    \end{tabular}
-\end{frame}
-
-\begin{frame}{Requirements - Formula}
-    \[
-        S_5 = \frac{\sum^n_{i=1}\left( R_{a_i} - R_{e_i} \right)}{n}
-    \]
-    \begin{itemize}
-        \item $R_a$ actual requirements completed for application $i$
-        \item $R_e$ expected requirements completed for application $i$
-    \end{itemize}
-\end{frame}
-
-\begin{frame}{Overall CRI}
-
-Weighted average of the 5 elements
-    
-\[
-    CRI =\sum\limits^n_{i=1} w_i S_i \text{  where } \sum\limits^n_{i=1} w_i = 1
-\]
-\end{frame}
-
-\subsection{Framework}
-
-\begin{frame}{Data Collection Framework}
-
-    \begin{itemize}
-        \item Database structure
-        \item Queries
-        \item Computations
-        \item Overall, how to store and compute CRI
-    \end{itemize}
-\end{frame}
-
-\subsection{Conclusion}
-
-\begin{frame}{Project Goals}
-    Upon completion, this work shall identify:
-    \begin{itemize}
-        \item Define \textbf{What} characteristics should be measured for an SDO
-        \item Define \textbf{How} to measure those characteristics
-        \item Map the relationship or lack of relationship with a Balanced Scorecard
-        \item Create a Framework to store the necessary data for CRI
-        \item Outline a Process to generate the CRI score
-        \item Provide an example CRI score with real data
-    \end{itemize}
-\end{frame}
-
-
 
 \end{document}
