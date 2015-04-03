@@ -153,9 +153,25 @@
                 
             \end{tabular}
         \end{frame} 
-        \begin{frame}{Quality Baseline Function}
-        \end{frame} 
         \begin{frame}{Quality Formula}
+            \begin{displaymath}
+               S_{1_i} = \left\{
+                 \begin{array}{lr}
+                   \text{where } f_i \geq d_i & :  \frac{f_i - d_i}{f_i} \times k  \\
+                   \text{where } d_i > f_i  & : \frac{f_i-d_i }{\sigma_i^2} \times k
+                 \end{array}
+               \right] 
+            \end{displaymath} 
+            
+            \begin{itemize}
+                \item $S_{1_i}$ is the quality score for Application ID $i$
+                \item $k$ scaling factor to produce results in the range $[-k,k]$
+                \item $d_i$ is the actual PROD defects for Application ID $i$
+                \item $f_i$ is the function to predict PROD defects for Application $i$ based upon 
+                    \textit{UAT Defects}, \textit{SIT Defects}, \textit{Testing Effort}, 
+                    and \textit{Development Effort}
+                \item $\sigma_i^2$ is the estimated variance for Application $i$
+            \end{itemize}
         \end{frame} 
     \subsection{Availability}
         \begin{frame}{Availability Data}
@@ -178,6 +194,21 @@
             \end{tabular}
         \end{frame} 
         \begin{frame}{Availability Formula }
+            \begin{displaymath}
+               S_{2_i} = \left\{
+                 \begin{array}{lr}
+                   \text{where } A_{a_i} \leq A_{e_i} & : \left[ \frac{A_{a_i} - A_{e_i}}{A_{e_i}}\times k \right] \\
+                   \text{where } A_{a_i} > A_{e_i}  & : \left[ \frac{A_{a_i} - A_{e_i} }{1-A_{e_i}}\times k \right]
+                 \end{array}
+               \right. 
+            \end{displaymath}
+            
+            \begin{itemize}
+                \item $S_{2_i}$ is the availability score for System ID $i$
+                \item $k$ scaling factor to produce results in the range $[-k,k]$
+                \item $A_{a_i}$ actual availability for System ID $i$
+                \item $A_{e_i}$ expected availability for System ID $i$
+            \end{itemize}
         \end{frame} 
     \subsection{Satisfaction}
         \begin{frame}{Satisfaction Data}
@@ -200,6 +231,18 @@
             \end{tabular}
         \end{frame} 
         \begin{frame}{Satisfaction Formula }
+            \[
+                S_{3_i} =  \frac{2}{max-min}k \cdot \frac{ \sum^m_{j=1}(a_{ij}-\frac{min + max}{2})}{m} = k \cdot \frac{ \sum^m_{j=1}(\frac{2a_{ij}-min-max}{max-min})}{m}
+            \]
+            
+            \begin{itemize}
+                \item $S_{3_i}$ is the satisfaction score for Question ID $i$
+                \item $k$ scaling factor to produce results in the range $[-k,k]$
+                \item $a_{ij}$ answer to question $i$ for respondent $j$
+                \item $m$ number of respondents
+                \item $min$ minimum score for a question
+                \item $max$ maximum score for a question
+            \end{itemize}
         \end{frame} 
     \subsection{Schedule}
         \begin{frame}{Schedule Data}
@@ -221,6 +264,15 @@
             \end{tabular}
         \end{frame} 
         \begin{frame}{Schedule Formula }
+            \begin{equation}
+                S_{4_i} = 2k \cdot \left(CDF(\Delta_i) - \frac{1}{2} \right)
+            \end{equation}
+            where
+            \begin{itemize}
+                \item $S_{4_i}$ is the schedule score for Project ID $i$
+                \item $\Delta_i$ is the proportion the schedule was missed for Project ID $i$
+                \item $k$ scaling factor to produce results in the range $[-k,k]$
+            \end{itemize}
         \end{frame} 
     \subsection{Requirements}
         \begin{frame}{Requirements Data}
@@ -239,15 +291,36 @@
             \end{tabular}
         \end{frame} 
         \begin{frame}{Requirements Formula }
+        \begin{displaymath}
+            S_{5_i} = \left\{
+             \begin{array}{lr}
+               \text{where } R_{a_i} > b \cdot R_{s_i} & :  1 \cdot k \\
+               \text{where } R_{a_i} \leq R_{s_i} & : \left[ \frac{R_{a_i} - R_{s_i}}{R_{s_i}}\cdot k \right] \\
+               \text{where } R_{a_i} > R_{s_i}  & : \left[ \frac{R_{a_i} - R_{s_i} }{b \cdot R_{s_i}}\cdot k \right]
+             \end{array}
+            \right. 
+            \end{displaymath}
+            
+            \begin{itemize}
+                \item $S_{5_i}$ is the requirements score for Project ID $i$
+                \item $k$ scaling factor to produce results in the range $[-k,k]$
+                \item $R_{a_i}$ actual requirements completed for Project ID $i$
+                \item $R_{s_i}$ expected requirements completed for Project ID $i$
+                \item $b$ multiplier to determine the upper bound
+            \end{itemize}
         \end{frame} 
     \subsection{Overall}
         \begin{frame}{Overall Formula}
+            \[
+                CRI =\sum\limits^n_{i=1} w_i S_i 
+                    \text{ where } \sum\limits^n_{i=1} w_i = 1
+            \]
+            
+            \begin{itemize}
+                \item $CRI$ is the overall CRI score for the time frequency
+            \end{itemize}
         \end{frame} 
 
-    \subsection{Comparison}
-        \begin{frame}{Comparison}
-        \end{frame} 
-    
     \subsection{Storage Framework}
         \begin{frame}{SDLC-AE}
             \begin{figure}[ht]
