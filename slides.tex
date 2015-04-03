@@ -5,6 +5,9 @@
 \usepackage{amsmath, amsfonts, graphicx}
 \usepackage{tikz}
 \usepackage{csquotes}
+\usepackage{longtable}
+\usepackage{colortbl}%
+  \newcommand{\myrowcolour}{\rowcolor[gray]{0.925}}
 
 
 \setbeamersize
@@ -43,6 +46,8 @@
   \end{enumerate}
 \end{frame}
 
+
+\subsection{TOC}
 \begin{frame}{Overview}
 
   \tableofcontents
@@ -129,6 +134,24 @@
         
     \subsection{Quality}
         \begin{frame}{Quality Data}
+            \centering
+            \begin{tabular}{l | r | r}
+                 {\bfseries Column Name}
+                 & {\bfseries Data Type}
+                 &  \\
+                
+                Application ID & String (factor) & Required \\
+                \myrowcolour%
+                Frequency Date & Date & Required \\
+                Development Effort & Integer & Required \\
+                \myrowcolour%
+                Testing Effort & Integer & Optional \\ 
+                SIT Defects & Integer & Optional \\ 
+                \myrowcolour%
+                UAT Defects & Integer  & Optional \\ 
+                PROD Defects & Integer  & Required \\
+                
+            \end{tabular}
         \end{frame} 
         \begin{frame}{Quality Baseline Function}
         \end{frame} 
@@ -136,21 +159,84 @@
         \end{frame} 
     \subsection{Availability}
         \begin{frame}{Availability Data}
+            \centering
+            \begin{tabular}{l | r | r}
+            {\bfseries Column Name}
+                 & {\bfseries Data Type}
+                 &  \\
+                
+                Service ID & String  & Required \\
+                \myrowcolour%
+                Frequency Date & Date & Required \\
+                Uptime & Float & Optional \\
+                \myrowcolour%
+                Scheduled Downtime & Float & Optional \\
+                Unscheduled Downtime & Float  & Optional \\
+                \myrowcolour%
+                Percent Uptime & Float & Required \\
+                Expected Percent Uptime & Float & Required \\
+            \end{tabular}
         \end{frame} 
         \begin{frame}{Availability Formula }
         \end{frame} 
     \subsection{Satisfaction}
         \begin{frame}{Satisfaction Data}
+            \centering
+            \begin{tabular}{l | r | r}
+                {\bfseries Column Name}
+                 & {\bfseries Data Type}
+                 &  \\
+                
+                Question ID & String  & Required \\
+                \myrowcolour%
+                Question Text & String  & Optional \\
+                Respondent ID & String & Optional \\
+                \myrowcolour%
+                Frequency Date & Date & Required \\
+                Response & Integer & Required \\
+                \myrowcolour%
+                Response Date & Date & Optional \\
+                Application ID & String & Optional \\
+            \end{tabular}
         \end{frame} 
         \begin{frame}{Satisfaction Formula }
         \end{frame} 
     \subsection{Schedule}
         \begin{frame}{Schedule Data}
+            \centering
+            \begin{tabular}{l | r | r}
+                {\bfseries Column Name}
+                 & {\bfseries Data Type}
+                 &  \\
+                
+                Project ID & String  & Required \\
+                \myrowcolour%
+                Frequency Date & Date & Required \\
+                Scheduled Start Date & Date & Required \\
+                \myrowcolour%
+                Scheduled Finish Date & Date & Required \\
+                Actual Start Date & Date  & Optional \\
+                \myrowcolour%
+                Actual Finish Date & Date  & Required \\
+            \end{tabular}
         \end{frame} 
         \begin{frame}{Schedule Formula }
         \end{frame} 
     \subsection{Requirements}
         \begin{frame}{Requirements Data}
+            \centering
+            \begin{tabular}{l | r | r}
+                {\bfseries Column Name}
+                 & {\bfseries Data Type}
+                 &  \\
+                
+                Project ID & String  & Required \\
+                \myrowcolour%
+                Frequency Date & Date & Required \\
+                Scheduled Requirements & Integer & Required \\
+                \myrowcolour%
+                Actual Requirements & Integer  & Required \\
+            \end{tabular}
         \end{frame} 
         \begin{frame}{Requirements Formula }
         \end{frame} 
@@ -159,7 +245,7 @@
         \end{frame} 
 
     \subsection{Comparison}
-        \begin{frame}{Requirements Data}
+        \begin{frame}{Comparison}
         \end{frame} 
     
     \subsection{Storage Framework}
@@ -174,8 +260,10 @@
         \begin{frame}{Case Study Overview}
             \begin{itemize}
                 \item SDO of a Large Financial Institution
-                \item Data spans years 2008 - 2015
+                \item Data spans years 2007 - 2015
                 \item $k = 100$
+                \item Equal Weighting
+                \item 4 Elements (Quality, Availability, Schedule, Requirements)
             \end{itemize}
         \end{frame}
     \subsection{Quality}
